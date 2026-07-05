@@ -24,21 +24,12 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-4xl sm:text-6xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]"
           >
-            Mimariden inşaata,{" "}
+            Hayallerin{" "}
             <span className="bg-gradient-to-r from-accent via-accent-2 to-accent-3 bg-clip-text text-transparent">
-              tek vizyonda
+              gerçeğe dönüştüğü
             </span>{" "}
-            buluşan tasarım ofisi.
+            yere hoşgeldiniz.
           </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.18 }}
-            className="mt-5 max-w-xl text-lg sm:text-xl font-medium italic text-accent"
-          >
-            {company.tagline}
-          </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 24 }}
