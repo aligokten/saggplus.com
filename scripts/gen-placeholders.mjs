@@ -7,12 +7,12 @@ const outDir = path.join(process.cwd(), "public", "uploads", "projects");
 fs.mkdirSync(outDir, { recursive: true });
 
 const palettes = [
-  ["#0f1729", "#1e3a5f", "#38bdf8"],
-  ["#16101f", "#3b1f52", "#c084fc"],
-  ["#0c1a14", "#123d2a", "#34d399"],
-  ["#1a1206", "#4a2e0d", "#f59e0b"],
-  ["#150c1c", "#3a1f3d", "#f472b6"],
-  ["#0b1420", "#1c3145", "#60a5fa"],
+  ["#171717", "#3a2416", "#f25623"],
+  ["#171717", "#3d3d3d", "#dedede"],
+  ["#171717", "#4d2e1c", "#f25623"],
+  ["#171717", "#333333", "#dedede"],
+  ["#171717", "#402615", "#f25623"],
+  ["#171717", "#404040", "#dedede"],
 ];
 
 function svg(seed, [c1, c2, c3]) {

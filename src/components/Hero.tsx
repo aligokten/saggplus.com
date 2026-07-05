@@ -56,7 +56,7 @@ export default function Hero() {
         >
           <a
             href="#projeler"
-            className="inline-flex items-center rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-[#05070d] hover:bg-accent transition-colors"
+            className="inline-flex items-center rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-[#171717] hover:bg-accent transition-colors"
           >
             Projelerimizi İncele
           </a>

@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/10">
       <FooterMap />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#05070d]/60 via-[#05070d]/85 to-[#05070d]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#171717]/60 via-[#171717]/85 to-[#171717]" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">

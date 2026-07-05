@@ -129,7 +129,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="mt-6 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-[#05070d] hover:bg-accent transition-colors disabled:opacity-60"
+              className="mt-6 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-[#171717] hover:bg-accent transition-colors disabled:opacity-60"
             >
               {status === "loading" ? (
                 "Gönderiliyor..."

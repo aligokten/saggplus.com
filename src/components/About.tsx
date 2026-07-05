@@ -62,7 +62,7 @@ export default function About() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="glass rounded-3xl p-8"
           >
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-2/15 text-accent-2">
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-3/15 text-accent-3">
               <Eye size={22} strokeWidth={1.75} />
             </div>
             <h3 className="mt-6 text-xl font-semibold">Vizyonumuz</h3>
@@ -102,7 +102,7 @@ export default function About() {
                   />
                 ) : (
                   <div
-                    className={`mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br ${avatarGradients[i % avatarGradients.length]} text-lg font-bold text-[#05070d]`}
+                    className={`mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br ${avatarGradients[i % avatarGradients.length]} text-lg font-bold text-[#171717]`}
                   >
                     {initials(member.name)}
                   </div>

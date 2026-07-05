@@ -71,7 +71,7 @@ function LoginForm() {
           <button
             type="submit"
             disabled={loading}
-            className="mt-2 inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-[#05070d] hover:bg-accent transition-colors disabled:opacity-60"
+            className="mt-2 inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-[#171717] hover:bg-accent transition-colors disabled:opacity-60"
           >
             {loading ? "Giriş yapılıyor..." : "Giriş Yap"}
           </button>

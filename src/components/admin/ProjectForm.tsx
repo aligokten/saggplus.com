@@ -205,7 +205,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
         <button
           type="submit"
           disabled={saving}
-          className="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-[#05070d] hover:bg-accent transition-colors disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-[#171717] hover:bg-accent transition-colors disabled:opacity-60"
         >
           {saving ? "Kaydediliyor..." : "Kaydet"}
         </button>

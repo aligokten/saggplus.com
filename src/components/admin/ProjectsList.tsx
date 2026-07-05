@@ -49,7 +49,7 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
         </div>
         <Link
           href="/admin/projects/new"
-          className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-[#05070d] hover:bg-accent transition-colors"
+          className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-[#171717] hover:bg-accent transition-colors"
         >
           <Plus size={16} /> Yeni Proje
         </Link>

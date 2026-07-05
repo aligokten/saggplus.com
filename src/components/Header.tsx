@@ -56,7 +56,7 @@ export default function Header() {
 
           <a
             href="#iletisim"
-            className="hidden md:inline-flex items-center rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-[#05070d] hover:bg-accent transition-colors"
+            className="hidden md:inline-flex items-center rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-[#171717] hover:bg-accent transition-colors"
           >
             Teklif Al
           </a>
@@ -94,7 +94,7 @@ export default function Header() {
             <a
               href="#iletisim"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-[#05070d]"
+              className="inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-[#171717]"
             >
               Teklif Al
             </a>

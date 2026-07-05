@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
   <defs>
     <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#16101f"/>
-      <stop offset="100%" stop-color="#3b1f52"/>
+      <stop offset="0%" stop-color="#171717"/>
+      <stop offset="100%" stop-color="#3d3d3d"/>
     </linearGradient>
   </defs>
   <rect width="1600" height="1000" fill="url(#g)"/>
-  <circle cx="1141.5160080225178" cy="308.2321251382382" r="81.54631936486112" fill="#c084fc" fill-opacity="0.08"/><circle cx="674.9449308401381" cy="466.16965987741423" r="198.85277355657308" fill="#c084fc" fill-opacity="0.08"/><circle cx="1049.373077470591" cy="511.29317447844187" r="236.6482150016236" fill="#c084fc" fill-opacity="0.08"/>
-  <line x1="0" y1="96.88570990704648" x2="1600" y2="36.885709907046476" stroke="#c084fc" stroke-opacity="0.12" stroke-width="1.5"/><line x1="0" y1="259.4992605817606" x2="1600" y2="199.4992605817606" stroke="#c084fc" stroke-opacity="0.12" stroke-width="1.5"/><line x1="0" y1="410.73345096177945" x2="1600" y2="350.73345096177945" stroke="#c084fc" stroke-opacity="0.12" stroke-width="1.5"/><line x1="0" y1="542.2044031287442" x2="1600" y2="482.20440312874416" stroke="#c084fc" stroke-opacity="0.12" stroke-width="1.5"/><line x1="0" y1="718.4824490285246" x2="1600" y2="658.4824490285246" stroke="#c084fc" stroke-opacity="0.12" stroke-width="1.5"/><line x1="0" y1="858.8548755941883" x2="1600" y2="798.8548755941883" stroke="#c084fc" stroke-opacity="0.12" stroke-width="1.5"/>
+  <circle cx="1141.5160080225178" cy="308.2321251382382" r="81.54631936486112" fill="#dedede" fill-opacity="0.08"/><circle cx="674.9449308401381" cy="466.16965987741423" r="198.85277355657308" fill="#dedede" fill-opacity="0.08"/><circle cx="1049.373077470591" cy="511.29317447844187" r="236.6482150016236" fill="#dedede" fill-opacity="0.08"/>
+  <line x1="0" y1="96.88570990704648" x2="1600" y2="36.885709907046476" stroke="#dedede" stroke-opacity="0.12" stroke-width="1.5"/><line x1="0" y1="259.4992605817606" x2="1600" y2="199.4992605817606" stroke="#dedede" stroke-opacity="0.12" stroke-width="1.5"/><line x1="0" y1="410.73345096177945" x2="1600" y2="350.73345096177945" stroke="#dedede" stroke-opacity="0.12" stroke-width="1.5"/><line x1="0" y1="542.2044031287442" x2="1600" y2="482.20440312874416" stroke="#dedede" stroke-opacity="0.12" stroke-width="1.5"/><line x1="0" y1="718.4824490285246" x2="1600" y2="658.4824490285246" stroke="#dedede" stroke-opacity="0.12" stroke-width="1.5"/><line x1="0" y1="858.8548755941883" x2="1600" y2="798.8548755941883" stroke="#dedede" stroke-opacity="0.12" stroke-width="1.5"/>
 </svg>

@@ -50,7 +50,7 @@ export default function ProjectModal({
         >
           {/* frosted backdrop over the rest of the landing page */}
           <motion.div
-            className="absolute inset-0 bg-[#05070d]/70 backdrop-blur-xl"
+            className="absolute inset-0 bg-[#171717]/70 backdrop-blur-xl"
             onClick={onClose}
           />
 
