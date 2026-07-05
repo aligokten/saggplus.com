@@ -2,6 +2,7 @@ import { Mail, MapPin, ExternalLink } from "lucide-react";
 import { company, ventures, nav } from "@/lib/content";
 import FooterMap from "./FooterMap";
 import InstagramIcon from "./icons/InstagramIcon";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
@@ -12,8 +13,8 @@ export default function Footer() {
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
-            <a href="#top" className="text-xl font-bold tracking-tight">
-              SAGG<span className="text-accent">+</span>
+            <a href="#top">
+              <Logo />
             </a>
             <p className="mt-4 max-w-sm text-sm text-ink-muted">
               {company.shortDescription}

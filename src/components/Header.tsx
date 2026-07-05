@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { nav } from "@/lib/content";
+import Logo from "./Logo";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -37,12 +38,8 @@ export default function Header() {
             scrolled ? "glass shadow-lg shadow-black/20" : "bg-transparent"
           }`}
         >
-          <a
-            href="#top"
-            className="text-xl font-bold tracking-tight text-ink"
-            onClick={() => setOpen(false)}
-          >
-            SAGG<span className="text-accent">+</span>
+          <a href="#top" onClick={() => setOpen(false)}>
+            <Logo />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
