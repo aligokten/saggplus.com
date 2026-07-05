@@ -11,6 +11,7 @@ export const company = {
   city: "Milas, Muğla",
   address: "İsmetpaşa Mahallesi, Zafer Caddesi No:42/C-D, Milas / Muğla",
   email: "info@saggplus.com",
+  phone: "0541 348 88 33",
   instagram: "https://www.instagram.com/sagg.insaat/",
   // Approximate coordinates for Milas, Muğla city center — update with the exact
   // office coordinates if you have them (e.g. from Google Maps "share location").

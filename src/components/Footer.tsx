@@ -1,8 +1,9 @@
-import { Mail, MapPin, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Phone, ExternalLink } from "lucide-react";
 import { company, ventures, nav } from "@/lib/content";
 import FooterMap from "./FooterMap";
 import InstagramIcon from "./icons/InstagramIcon";
 import Logo from "./Logo";
+import InternshipApplication from "./InternshipApplication";
 
 export default function Footer() {
   return (
@@ -25,6 +26,12 @@ export default function Footer() {
                 className="flex items-center gap-2 hover:text-accent transition-colors"
               >
                 <Mail size={16} className="text-accent" /> {company.email}
+              </a>
+              <a
+                href={`tel:${company.phone.replace(/\s+/g, "")}`}
+                className="flex items-center gap-2 hover:text-accent transition-colors"
+              >
+                <Phone size={16} className="text-accent" /> {company.phone}
               </a>
               <div className="flex items-start gap-2 text-ink-muted">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
@@ -53,6 +60,9 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <InternshipApplication />
+              </li>
             </ul>
           </div>
 

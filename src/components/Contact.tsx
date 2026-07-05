@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Phone, Send, CheckCircle2 } from "lucide-react";
 import { company } from "@/lib/content";
 import SectionHeading from "./SectionHeading";
 import InstagramIcon from "./icons/InstagramIcon";
@@ -72,6 +72,14 @@ export default function Contact() {
             >
               <Mail size={18} className="mt-0.5 shrink-0 text-accent" />
               {company.email}
+            </a>
+
+            <a
+              href={`tel:${company.phone.replace(/\s+/g, "")}`}
+              className="flex items-start gap-3 text-sm hover:text-accent transition-colors"
+            >
+              <Phone size={18} className="mt-0.5 shrink-0 text-accent" />
+              {company.phone}
             </a>
 
             <div className="flex items-start gap-3 text-sm">

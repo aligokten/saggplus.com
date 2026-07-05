@@ -71,6 +71,21 @@ db.exec(`
 
   INSERT OR IGNORE INTO site_settings (id, hero_image, announcement_enabled, announcement_text)
   VALUES (1, '/hero.jpg', 0, '');
+
+  CREATE TABLE IF NOT EXISTS internship_applications (
+    id TEXT PRIMARY KEY,
+    full_name TEXT NOT NULL,
+    school TEXT NOT NULL DEFAULT '',
+    department TEXT NOT NULL DEFAULT '',
+    term TEXT NOT NULL DEFAULT '',
+    internship_type TEXT NOT NULL DEFAULT '',
+    required_duration TEXT NOT NULL DEFAULT '',
+    email TEXT NOT NULL,
+    phone TEXT NOT NULL DEFAULT '',
+    notes TEXT NOT NULL DEFAULT '',
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    is_read INTEGER NOT NULL DEFAULT 0
+  );
 `);
 
 export default db;
