@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "bodrum-villa",
+    "images": [
+      "/uploads/projects/bodrum-villa-1.svg",
+      "/uploads/projects/bodrum-villa-2.svg",
+      "/uploads/projects/bodrum-villa-3.svg"
+    ]
+  },
+  {
+    "slug": "milas-ofis-tadilat",
+    "images": [
+      "/uploads/projects/milas-ofis-tadilat-1.svg",
+      "/uploads/projects/milas-ofis-tadilat-2.svg",
+      "/uploads/projects/milas-ofis-tadilat-3.svg"
+    ]
+  },
+  {
+    "slug": "akustik-konser-salonu",
+    "images": [
+      "/uploads/projects/akustik-konser-salonu-1.svg",
+      "/uploads/projects/akustik-konser-salonu-2.svg",
+      "/uploads/projects/akustik-konser-salonu-3.svg"
+    ]
+  },
+  {
+    "slug": "zafer-caddesi-rezidans",
+    "images": [
+      "/uploads/projects/zafer-caddesi-rezidans-1.svg",
+      "/uploads/projects/zafer-caddesi-rezidans-2.svg",
+      "/uploads/projects/zafer-caddesi-rezidans-3.svg"
+    ]
+  },
+  {
+    "slug": "sahil-konutu-ic-mekan",
+    "images": [
+      "/uploads/projects/sahil-konutu-ic-mekan-1.svg",
+      "/uploads/projects/sahil-konutu-ic-mekan-2.svg",
+      "/uploads/projects/sahil-konutu-ic-mekan-3.svg"
+    ]
+  },
+  {
+    "slug": "kurumsal-uiux-vitrin",
+    "images": [
+      "/uploads/projects/kurumsal-uiux-vitrin-1.svg",
+      "/uploads/projects/kurumsal-uiux-vitrin-2.svg",
+      "/uploads/projects/kurumsal-uiux-vitrin-3.svg"
+    ]
+  }
+]
