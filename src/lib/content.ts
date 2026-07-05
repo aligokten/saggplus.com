@@ -4,6 +4,7 @@ export const company = {
   name: "SAGG+",
   legalName:
     "Sinem Ali Gökten Grup İnşaat Mimarlık Akustik Müh. San. Tic. Ltd. Şti.",
+  tagline: "Hayallerin gerçeğe dönüştüğü yere hoşgeldiniz.",
   shortDescription:
     "Mimarlık, iç mekan tasarımı, akustik mühendislik ve anahtar teslim inşaat hizmetlerini tek çatı altında sunan Ege Bölgesi merkezli tasarım & yapı ofisi.",
   founded: "2020",

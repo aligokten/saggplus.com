@@ -31,10 +31,19 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.18 }}
+          className="mt-5 max-w-2xl text-lg sm:text-xl font-medium italic text-accent"
+        >
+          {company.tagline}
+        </motion.p>
+
+        <motion.p
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-6 max-w-2xl text-base sm:text-lg text-ink-muted"
+          transition={{ duration: 0.7, delay: 0.26 }}
+          className="mt-4 max-w-2xl text-base sm:text-lg text-ink-muted"
         >
           {company.shortDescription}
         </motion.p>
