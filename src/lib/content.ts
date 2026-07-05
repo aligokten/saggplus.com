@@ -1,5 +1,4 @@
 // Static site content. Edit here for copy changes that aren't project data.
-// Team members #3 and #4 are placeholders — replace with real names/photos/titles.
 
 export const company = {
   name: "SAGG+",
@@ -41,8 +40,8 @@ export type TeamMember = {
 export const team: TeamMember[] = [
   { name: "Ali Gökten", title: "Kurucu Ortak / Mimar" },
   { name: "H. Sinem Helvacıoğlu Gökten", title: "Kurucu Ortak / Mimar" },
-  { name: "Proje Mimarı", title: "Mimar" },
-  { name: "Akustik & Saha Uzmanı", title: "Akustik Mühendisi" },
+  { name: "Oktay Turgut", title: "Mimar" },
+  { name: "Eda Yavaş", title: "Mimar" },
 ];
 
 export type Service = {
