@@ -41,6 +41,36 @@ db.exec(`
     created_at TEXT NOT NULL DEFAULT (datetime('now')),
     is_read INTEGER NOT NULL DEFAULT 0
   );
+
+  CREATE TABLE IF NOT EXISTS services (
+    id TEXT PRIMARY KEY,
+    icon TEXT NOT NULL DEFAULT 'compass',
+    title TEXT NOT NULL,
+    description TEXT NOT NULL DEFAULT '',
+    sort_order INTEGER NOT NULL DEFAULT 0,
+    published INTEGER NOT NULL DEFAULT 1,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS team_members (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    title TEXT NOT NULL DEFAULT '',
+    photo TEXT NOT NULL DEFAULT '',
+    sort_order INTEGER NOT NULL DEFAULT 0,
+    published INTEGER NOT NULL DEFAULT 1,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS site_settings (
+    id INTEGER PRIMARY KEY CHECK (id = 1),
+    hero_image TEXT NOT NULL DEFAULT '/hero.jpg',
+    announcement_enabled INTEGER NOT NULL DEFAULT 0,
+    announcement_text TEXT NOT NULL DEFAULT ''
+  );
+
+  INSERT OR IGNORE INTO site_settings (id, hero_image, announcement_enabled, announcement_text)
+  VALUES (1, '/hero.jpg', 0, '');
 `);
 
 export default db;

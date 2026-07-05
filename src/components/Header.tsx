@@ -6,7 +6,11 @@ import { Menu, X } from "lucide-react";
 import { nav } from "@/lib/content";
 import Logo from "./Logo";
 
-export default function Header() {
+export default function Header({
+  announcementEnabled = false,
+}: {
+  announcementEnabled?: boolean;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -26,9 +30,9 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-3" : "py-5"
-      }`}
+      className={`fixed inset-x-0 z-40 transition-all duration-300 ${
+        announcementEnabled ? "top-9" : "top-0"
+      } ${scrolled ? "py-3" : "py-5"}`}
     >
       <div
         className={`mx-auto max-w-6xl px-4 sm:px-6 transition-all duration-300`}

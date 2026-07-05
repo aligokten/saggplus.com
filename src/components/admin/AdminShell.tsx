@@ -2,11 +2,23 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import { LayoutGrid, MessageSquare, LogOut, ExternalLink } from "lucide-react";
+import {
+  LayoutGrid,
+  MessageSquare,
+  LogOut,
+  ExternalLink,
+  Wrench,
+  Users,
+  Settings,
+} from "lucide-react";
+import Logo from "@/components/Logo";
 
 const links = [
   { href: "/admin", label: "Projeler", icon: LayoutGrid },
+  { href: "/admin/services", label: "Hizmetler", icon: Wrench },
+  { href: "/admin/team", label: "Ekip", icon: Users },
   { href: "/admin/messages", label: "Mesajlar", icon: MessageSquare },
+  { href: "/admin/settings", label: "Ayarlar", icon: Settings },
 ];
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {
@@ -22,8 +34,9 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
       <aside className="lg:w-64 shrink-0 border-b lg:border-b-0 lg:border-r border-white/10 p-5 flex lg:flex-col gap-2">
-        <Link href="/" className="text-lg font-bold tracking-tight mb-4 hidden lg:block">
-          SAGG<span className="text-accent">+</span> Panel
+        <Link href="/" className="mb-4 hidden lg:flex items-center gap-2">
+          <Logo className="h-7 w-auto" />
+          <span className="text-sm font-semibold text-ink-muted">Panel</span>
         </Link>
 
         <nav className="flex lg:flex-col gap-1 flex-1">

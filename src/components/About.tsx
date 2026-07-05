@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Target, Eye } from "lucide-react";
-import { about, company, team } from "@/lib/content";
+import { about, company } from "@/lib/content";
+import type { TeamMemberRecord } from "@/lib/team";
 import SectionHeading from "./SectionHeading";
 
 function initials(name: string) {
@@ -22,7 +23,7 @@ const avatarGradients = [
   "from-accent to-accent-2",
 ];
 
-export default function About() {
+export default function About({ team }: { team: TeamMemberRecord[] }) {
   return (
     <section id="hakkimizda" className="relative py-24 sm:py-32 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
@@ -72,6 +73,7 @@ export default function About() {
           </motion.div>
         </div>
 
+        {team.length > 0 && (
         <div className="mt-20">
           <motion.h3
             initial={{ opacity: 0, y: 16 }}
@@ -86,7 +88,7 @@ export default function About() {
           <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-5">
             {team.map((member, i) => (
               <motion.div
-                key={member.name}
+                key={member.id}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
@@ -113,6 +115,7 @@ export default function About() {
             ))}
           </div>
         </div>
+        )}
       </div>
     </section>
   );

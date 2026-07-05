@@ -1,28 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Compass,
-  Sofa,
-  Waves,
-  HardHat,
-  Hammer,
-  MonitorSmartphone,
-  type LucideIcon,
-} from "lucide-react";
-import { services, type Service } from "@/lib/content";
+import type { ServiceRecord } from "@/lib/services";
+import { SERVICE_ICONS } from "@/lib/serviceIcons";
 import SectionHeading from "./SectionHeading";
 
-const icons: Record<Service["icon"], LucideIcon> = {
-  compass: Compass,
-  sofa: Sofa,
-  waves: Waves,
-  "hard-hat": HardHat,
-  hammer: Hammer,
-  "monitor-smartphone": MonitorSmartphone,
-};
+export default function Services({ services }: { services: ServiceRecord[] }) {
+  if (services.length === 0) return null;
 
-export default function Services() {
   return (
     <section id="hizmetlerimiz" className="relative py-24 sm:py-32 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
@@ -33,10 +18,10 @@ export default function Services() {
 
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, i) => {
-            const Icon = icons[service.icon];
+            const Icon = SERVICE_ICONS[service.icon] ?? SERVICE_ICONS.compass;
             return (
               <motion.div
-                key={service.title}
+                key={service.id}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
