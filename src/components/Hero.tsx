@@ -37,7 +37,7 @@ export default function Hero({
           className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs sm:text-sm font-medium text-ink-muted mb-6"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-accent-3" />
-          {company.city} · {company.founded}&apos;den beri
+          SAGG İnşaat Mimarlık Akustik
         </motion.p>
 
         <motion.h1
