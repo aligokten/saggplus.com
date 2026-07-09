@@ -19,7 +19,7 @@ const links = [
   { href: "/admin/services", label: "Hizmetler", icon: Wrench },
   { href: "/admin/team", label: "Ekip", icon: Users },
   { href: "/admin/messages", label: "Mesajlar", icon: MessageSquare },
-  { href: "/admin/internship-applications", label: "Staj Başvuruları", icon: GraduationCap },
+  { href: "/admin/staj", label: "Staj Başvuruları", icon: GraduationCap },
   { href: "/admin/settings", label: "Ayarlar", icon: Settings },
 ];
 
