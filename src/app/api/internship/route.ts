@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createInternshipApplication } from "@/lib/internship";
+import { createContactSubmission } from "@/lib/contact";
 
 const INTERNSHIP_TYPES = new Set(["Ofis Stajı", "Şantiye Stajı"]);
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
+
   if (!body) {
     return NextResponse.json({ error: "Geçersiz istek." }, { status: 400 });
   }
@@ -19,12 +21,7 @@ export async function POST(req: NextRequest) {
     email,
     phone,
     notes,
-    website, // honeypot field, must stay empty
   } = body as Record<string, string | undefined>;
-
-  if (website) {
-    return NextResponse.json({ ok: true });
-  }
 
   if (
     !full_name?.trim() ||
@@ -46,6 +43,7 @@ export async function POST(req: NextRequest) {
   }
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   if (!emailPattern.test(email.trim())) {
     return NextResponse.json(
       { error: "Geçerli bir e-posta adresi girin." },
@@ -63,7 +61,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Girdi çok uzun." }, { status: 400 });
   }
 
-  createInternshipApplication({
+  const cleanApplication = {
     full_name: full_name.trim(),
     school: school.trim(),
     department: department.trim(),
@@ -73,6 +71,28 @@ export async function POST(req: NextRequest) {
     email: email.trim(),
     phone: phone?.trim() ?? "",
     notes: notes?.trim() ?? "",
+  };
+
+  createInternshipApplication(cleanApplication);
+
+  createContactSubmission({
+    name: cleanApplication.full_name,
+    email: cleanApplication.email,
+    phone: cleanApplication.phone,
+    message: [
+      "STAJ BAŞVURUSU",
+      "",
+      `Ad Soyad: ${cleanApplication.full_name}`,
+      `Okul: ${cleanApplication.school}`,
+      `Bölüm: ${cleanApplication.department}`,
+      `Bitirilen Dönem: ${cleanApplication.term}`,
+      `Staj Türü: ${cleanApplication.internship_type}`,
+      `Zorunlu Staj Süresi: ${cleanApplication.required_duration}`,
+      `Telefon: ${cleanApplication.phone || "-"}`,
+      "",
+      "Ek Not:",
+      cleanApplication.notes || "-",
+    ].join("\n"),
   });
 
   return NextResponse.json({ ok: true });
