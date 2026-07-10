@@ -84,8 +84,18 @@ db.exec(`
     phone TEXT NOT NULL DEFAULT '',
     notes TEXT NOT NULL DEFAULT '',
     created_at TEXT NOT NULL DEFAULT (datetime('now')),
-    is_read INTEGER NOT NULL DEFAULT 0
+    is_read INTEGER NOT NULL DEFAULT 0,
+    status TEXT NOT NULL DEFAULT 'beklemede'
   );
 `);
+
+const internshipColumns = db
+  .prepare("PRAGMA table_info(internship_applications)")
+  .all() as { name: string }[];
+if (!internshipColumns.some((c) => c.name === "status")) {
+  db.exec(
+    "ALTER TABLE internship_applications ADD COLUMN status TEXT NOT NULL DEFAULT 'beklemede'"
+  );
+}
 
 export default db;

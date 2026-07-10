@@ -1,6 +1,15 @@
 import { nanoid } from "nanoid";
 import db from "./db";
 
+export const INTERNSHIP_STATUSES = [
+  "beklemede",
+  "iletisime_gecildi",
+  "onaylandi",
+  "reddedildi",
+] as const;
+
+export type InternshipStatus = (typeof INTERNSHIP_STATUSES)[number];
+
 export type InternshipApplicationRecord = {
   id: string;
   full_name: string;
@@ -14,6 +23,7 @@ export type InternshipApplicationRecord = {
   notes: string;
   created_at: string;
   is_read: number;
+  status: InternshipStatus;
 };
 
 export type InternshipApplicationInput = {
@@ -57,4 +67,21 @@ export function listInternshipApplications(): InternshipApplicationRecord[] {
   return db
     .prepare("SELECT * FROM internship_applications ORDER BY created_at DESC")
     .all() as InternshipApplicationRecord[];
+}
+
+export function updateInternshipApplicationStatus(
+  id: string,
+  status: InternshipStatus
+): InternshipApplicationRecord | undefined {
+  db.prepare("UPDATE internship_applications SET status = ? WHERE id = ?").run(
+    status,
+    id
+  );
+  return db
+    .prepare("SELECT * FROM internship_applications WHERE id = ?")
+    .get(id) as InternshipApplicationRecord | undefined;
+}
+
+export function deleteInternshipApplication(id: string): void {
+  db.prepare("DELETE FROM internship_applications WHERE id = ?").run(id);
 }
