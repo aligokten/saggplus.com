@@ -10,6 +10,9 @@ import ProjectModal from "./ProjectModal";
 export default function Projects({ projects }: { projects: Project[] }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<Project | null>(null);
+  // Touch devices have no hover, and iOS Safari only honours :active on
+  // elements that carry a touch listener, so drive the press state ourselves.
+  const [touched, setTouched] = useState<string | null>(null);
 
   const scrollBy = (dir: 1 | -1) => {
     const el = trackRef.current;
@@ -59,6 +62,9 @@ export default function Projects({ projects }: { projects: Project[] }) {
             key={project.id}
             type="button"
             onClick={() => setActive(project)}
+            onTouchStart={() => setTouched(project.id)}
+            onTouchEnd={() => setTouched(null)}
+            onTouchCancel={() => setTouched(null)}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
@@ -76,10 +82,16 @@ export default function Projects({ projects }: { projects: Project[] }) {
                 <img
                   src={project.images[0]}
                   alt={project.title}
-                  className="block h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                  className={`block h-full w-full object-cover object-center transition-[transform,filter] duration-700 group-hover:grayscale-0 group-hover:scale-110 ${
+                    touched === project.id ? "grayscale-0" : "grayscale"
+                  }`}
                 />
               ) : (
-                <div className="h-full w-full bg-gradient-to-br from-accent/20 to-accent-2/20" />
+                <div
+                  className={`h-full w-full bg-gradient-to-br from-accent/20 to-accent-2/20 transition-[filter] duration-700 group-hover:grayscale-0 ${
+                    touched === project.id ? "grayscale-0" : "grayscale"
+                  }`}
+                />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <div className="absolute top-4 left-4 rounded-full glass-strong px-3 py-1 text-[11px] font-medium tracking-wide text-ink">
