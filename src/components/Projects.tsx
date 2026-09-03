@@ -66,7 +66,11 @@ export default function Projects({ projects }: { projects: Project[] }) {
             whileHover={{ y: -8 }}
             className="group relative flex h-full flex-col snap-start rounded-3xl glass overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
-            <div className="relative aspect-[4/3] shrink-0 overflow-hidden">
+            {/* The card's own overflow clip is unreliable here: .glass adds a
+                backdrop-filter, and compositing can drop the parent's rounded
+                clip in Chrome/Edge, squaring off the image's top corners. So
+                the image box carries its own matching radius. */}
+            <div className="relative aspect-[4/3] shrink-0 overflow-hidden rounded-t-3xl">
               {project.images[0] ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
