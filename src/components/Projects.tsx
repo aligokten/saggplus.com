@@ -20,6 +20,10 @@ export default function Projects({ projects }: { projects: Project[] }) {
 
   if (projects.length === 0) return null;
 
+  // Cards flow down 3 rows then wrap to the next column, so the track stays
+  // roughly a third as wide. Fewer projects use fewer rows to avoid gaps.
+  const rows = Math.min(3, projects.length);
+
   return (
     <section id="projeler" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 flex items-end justify-between gap-6">
@@ -47,7 +51,8 @@ export default function Projects({ projects }: { projects: Project[] }) {
 
       <div
         ref={trackRef}
-        className="mt-12 flex gap-6 overflow-x-auto no-scrollbar px-4 sm:px-6 pb-4 snap-x snap-mandatory"
+        style={{ gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))` }}
+        className="mt-12 grid grid-flow-col auto-cols-[78vw] sm:auto-cols-[340px] gap-5 overflow-x-auto no-scrollbar px-4 sm:px-6 pb-4 snap-x snap-mandatory"
       >
         {projects.map((project, i) => (
           <motion.button
@@ -57,17 +62,17 @@ export default function Projects({ projects }: { projects: Project[] }) {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: (i % 4) * 0.08 }}
+            transition={{ duration: 0.5, delay: (i % rows) * 0.08 }}
             whileHover={{ y: -8 }}
-            className="group relative shrink-0 snap-start w-[78vw] sm:w-[380px] rounded-3xl glass overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="group relative flex h-full flex-col snap-start rounded-3xl glass overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
-            <div className="relative aspect-[4/3] overflow-hidden">
+            <div className="relative aspect-[4/3] shrink-0 overflow-hidden">
               {project.images[0] ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={project.images[0]}
                   alt={project.title}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="block h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
                 />
               ) : (
                 <div className="h-full w-full bg-gradient-to-br from-accent/20 to-accent-2/20" />
@@ -81,15 +86,17 @@ export default function Projects({ projects }: { projects: Project[] }) {
               </div>
             </div>
 
-            <div className="p-6">
-              <h3 className="text-lg font-semibold text-ink">{project.title}</h3>
+            <div className="flex flex-1 flex-col p-5">
+              <h3 className="text-base font-semibold text-ink line-clamp-1">
+                {project.title}
+              </h3>
               <p className="mt-1.5 text-sm text-ink-muted line-clamp-2">
                 {project.summary}
               </p>
-              <div className="mt-4 flex items-center gap-3 text-xs text-ink-muted">
-                <span>{project.location}</span>
-                <span className="h-1 w-1 rounded-full bg-ink-muted/50" />
-                <span>{project.year}</span>
+              <div className="mt-auto pt-3 flex items-center gap-3 text-xs text-ink-muted">
+                <span className="truncate">{project.location}</span>
+                <span className="h-1 w-1 shrink-0 rounded-full bg-ink-muted/50" />
+                <span className="shrink-0">{project.year}</span>
               </div>
             </div>
           </motion.button>
