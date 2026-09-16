@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { nav } from "@/lib/content";
@@ -39,7 +40,9 @@ export default function Header({
       >
         <div
           className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 transition-all duration-300 ${
-            scrolled ? "glass shadow-lg shadow-black/20" : "bg-transparent"
+            scrolled
+              ? "glass-frost shadow-xl shadow-black/30"
+              : "bg-transparent"
           }`}
         >
           <a href="#top" onClick={() => setOpen(false)}>
@@ -48,22 +51,22 @@ export default function Header({
 
           <nav className="hidden md:flex items-center gap-8">
             {nav.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="text-sm font-medium text-ink-muted hover:text-ink transition-colors"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
-          <a
-            href="#iletisim"
+          <Link
+            href="/#iletisim"
             className="hidden md:inline-flex items-center rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-[#171717] hover:bg-accent transition-colors"
           >
             Teklif Al
-          </a>
+          </Link>
 
           <button
             type="button"
@@ -86,22 +89,22 @@ export default function Header({
             className="md:hidden mx-4 mt-2 rounded-2xl glass-strong px-6 py-6 flex flex-col gap-5"
           >
             {nav.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className="text-base font-medium text-ink-muted hover:text-ink transition-colors"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#iletisim"
+            <Link
+              href="/#iletisim"
               onClick={() => setOpen(false)}
               className="inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-[#171717]"
             >
               Teklif Al
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

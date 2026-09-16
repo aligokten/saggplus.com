@@ -35,6 +35,33 @@ export function listProjects(opts: { onlyPublished?: boolean } = {}): Project[] 
   return (rows as ProjectRow[]).map(rowToProject);
 }
 
+/**
+ * A random handful drawn from the most recently added projects, for the
+ * homepage teaser. `pool` bounds how far back "recent" reaches, so the
+ * selection stays fresh while still varying between visits.
+ */
+export function listFeaturedProjects(count = 4, pool = 8): Project[] {
+  const rows = db
+    .prepare(
+      "SELECT * FROM projects WHERE published = 1 ORDER BY created_at DESC, sort_order DESC LIMIT ?"
+    )
+    .all(pool) as ProjectRow[];
+
+  const items = rows.map(rowToProject);
+  for (let i = items.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [items[i], items[j]] = [items[j], items[i]];
+  }
+  return items.slice(0, count);
+}
+
+export function countPublishedProjects(): number {
+  const row = db
+    .prepare("SELECT COUNT(*) AS c FROM projects WHERE published = 1")
+    .get() as { c: number };
+  return row.c;
+}
+
 export function getProject(id: string): Project | null {
   const row = db.prepare("SELECT * FROM projects WHERE id = ?").get(id) as
     | ProjectRow

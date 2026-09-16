@@ -52,9 +52,11 @@ export const ventures: Venture[] = [
   },
 ];
 
+// Root-relative so the links also resolve from pages other than the homepage
+// (e.g. /projeler), where the section anchors don't exist.
 export const nav = [
-  { href: "#projeler", label: "Projeler" },
-  { href: "#hizmetlerimiz", label: "Hizmetlerimiz" },
-  { href: "#hakkimizda", label: "Hakkımızda" },
-  { href: "#iletisim", label: "İletişim" },
+  { href: "/projeler", label: "Projeler" },
+  { href: "/#hizmetlerimiz", label: "Hizmetlerimiz" },
+  { href: "/#hakkimizda", label: "Hakkımızda" },
+  { href: "/#iletisim", label: "İletişim" },
 ];

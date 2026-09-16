@@ -4,7 +4,7 @@ import Projects from "@/components/Projects";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { listProjects } from "@/lib/projects";
+import { countPublishedProjects, listFeaturedProjects } from "@/lib/projects";
 import { listServices } from "@/lib/services";
 import { listTeamMembers } from "@/lib/team";
 import { getSettings } from "@/lib/settings";
@@ -14,7 +14,8 @@ import { getSettings } from "@/lib/settings";
 export const dynamic = "force-dynamic";
 
 export default function Home() {
-  const projects = listProjects({ onlyPublished: true });
+  const projects = listFeaturedProjects(4);
+  const projectCount = countPublishedProjects();
   const services = listServices({ onlyPublished: true });
   const team = listTeamMembers({ onlyPublished: true });
   const settings = getSettings();
@@ -26,7 +27,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero heroImage={settings.hero_image} announcementEnabled={announcementEnabled} />
         <Services services={services} />
-        <Projects projects={projects} />
+        <Projects projects={projects} totalCount={projectCount} />
         <About team={team} />
         <Contact />
       </main>
