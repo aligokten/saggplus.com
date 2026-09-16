@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { nav } from "@/lib/content";
-import Logo from "./Logo";
+import LogoLink from "./LogoLink";
 
 export default function Header({
   announcementEnabled = false,
@@ -45,9 +45,7 @@ export default function Header({
               : "bg-transparent"
           }`}
         >
-          <a href="#top" onClick={() => setOpen(false)}>
-            <Logo />
-          </a>
+          <LogoLink onNavigate={() => setOpen(false)} />
 
           <nav className="hidden md:flex items-center gap-8">
             {nav.map((item) => (
