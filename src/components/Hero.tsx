@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { company } from "@/lib/content";
+import NavLink from "./NavLink";
 
 export default function Hero({
   heroImage,
@@ -68,18 +69,18 @@ export default function Hero({
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-10 flex flex-wrap items-center gap-4"
         >
-          <a
-            href="#projeler"
+          <NavLink
+            href="/#projeler"
             className="inline-flex items-center rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-[#171717] hover:bg-accent transition-colors"
           >
             Projelerimizi İncele
-          </a>
-          <a
-            href="#iletisim"
+          </NavLink>
+          <NavLink
+            href="/#iletisim"
             className="inline-flex items-center rounded-full glass px-6 py-3.5 text-sm font-semibold text-ink hover:bg-white/10 transition-colors"
           >
             Bize Ulaşın
-          </a>
+          </NavLink>
         </motion.div>
       </div>
     </section>

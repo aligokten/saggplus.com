@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { nav } from "@/lib/content";
 import LogoLink from "./LogoLink";
+import NavLink from "./NavLink";
 
 export default function Header({
   announcementEnabled = false,
@@ -49,22 +49,22 @@ export default function Header({
 
           <nav className="hidden md:flex items-center gap-8">
             {nav.map((item) => (
-              <Link
+              <NavLink
                 key={item.href}
                 href={item.href}
                 className="text-sm font-medium text-ink-muted hover:text-ink transition-colors"
               >
                 {item.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
-          <Link
+          <NavLink
             href="/#iletisim"
             className="hidden md:inline-flex items-center rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-[#171717] hover:bg-accent transition-colors"
           >
             Teklif Al
-          </Link>
+          </NavLink>
 
           <button
             type="button"
@@ -87,22 +87,22 @@ export default function Header({
             className="md:hidden mx-4 mt-2 rounded-2xl glass-strong px-6 py-6 flex flex-col gap-5"
           >
             {nav.map((item) => (
-              <Link
+              <NavLink
                 key={item.href}
                 href={item.href}
-                onClick={() => setOpen(false)}
+                onNavigate={() => setOpen(false)}
                 className="text-base font-medium text-ink-muted hover:text-ink transition-colors"
               >
                 {item.label}
-              </Link>
+              </NavLink>
             ))}
-            <Link
+            <NavLink
               href="/#iletisim"
-              onClick={() => setOpen(false)}
+              onNavigate={() => setOpen(false)}
               className="inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-[#171717]"
             >
               Teklif Al
-            </Link>
+            </NavLink>
           </motion.div>
         )}
       </AnimatePresence>

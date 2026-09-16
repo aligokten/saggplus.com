@@ -3,6 +3,7 @@ import { company, ventures, nav } from "@/lib/content";
 import FooterMap from "./FooterMap";
 import InstagramIcon from "./icons/InstagramIcon";
 import LogoLink from "./LogoLink";
+import NavLink from "./NavLink";
 import InternshipApplication from "./InternshipApplication";
 
 export default function Footer() {
@@ -53,9 +54,9 @@ export default function Footer() {
             <ul className="mt-4 flex flex-col gap-3 text-sm">
               {nav.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="hover:text-accent transition-colors">
+                  <NavLink href={item.href} className="hover:text-accent transition-colors">
                     {item.label}
-                  </a>
+                  </NavLink>
                 </li>
               ))}
               <li>

@@ -27,6 +27,9 @@ export default function LogoLink({
         if (pathname === "/") {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: "smooth" });
+          // Drop any section hash, otherwise re-clicking that same menu item
+          // would be a no-op because the address bar already points at it.
+          history.replaceState(null, "", "/");
         }
       }}
     >
