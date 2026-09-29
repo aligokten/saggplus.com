@@ -75,6 +75,37 @@ biçimiyle uyumlu değildir.
 - `/admin/projects/new` — Yeni proje ekle: başlık, kategori, konum, yıl, kısa özet,
   detaylı açıklama ve görseller (JPG/PNG/WEBP/GIF, en fazla 10MB).
 - `/admin/messages` — İletişim formundan gelen mesajları görüntüle.
+- `/admin/akustik` — akustik.saggplus.com demo / tam lisans hesaplarını yönet (bkz. aşağıda).
+
+## Akustik Hesap Aracı girişi (akustik.saggplus.com)
+
+akustik.saggplus.com'daki SAGG Akustik Hesap Aracı'na giriş bu uygulama üzerinden yönetilir.
+Hesaplar admin panelindeki **Akustik Kullanıcıları** (`/admin/akustik`) sayfasından açılır.
+
+| Hesap türü | Süre |
+|---|---|
+| **Demo** | İlk başarılı girişten itibaren **24 saat**. Süre dolunca şifre veritabanından silinir, hesap "Süresi doldu" olarak kapanır ve açık oturum bir sonraki istekte düşer. Aynı şifreyle yeniden giriş yapılamaz. |
+| **Tam lisans** | Süresiz; yönetici iptal edene dek geçerli (oturum 7 günde bir yenilenir). |
+
+- Hesap oluşturulunca şifre **yalnızca bir kez** gösterilir; "Kopyala" ya da "E-posta taslağı aç"
+  ile kullanıcıya iletilir (SMTP gerekmez, e-posta istemcinizde hazır metin açılır).
+- **Yeni şifre**: eski şifreyi ve açık oturumları geçersiz kılar; demo süresini uzatmaz.
+- **İptal et**: hesabı hemen kapatır. **Sil**: kaydı siler; aynı e-postaya yeniden hesap açılabilir.
+- Bir e-postaya aynı anda tek hesap tanımlanabilir.
+- Hatalı girişler IP ve e-posta başına 15 dakikada 10 denemeyle sınırlıdır.
+
+### Kurulum
+
+1. `.env` dosyasına `AKUSTIK_SESSION_SECRET` ekleyin (`openssl rand -base64 48`; admin anahtarından farklı).
+2. Uygulamayı yeniden derleyip başlatın (`npm run build && pm2 restart ...`). Tablo ilk açılışta
+   kendiliğinden oluşur.
+3. Nginx'te akustik.saggplus.com sunucu bloğunu [`docs/akustik-nginx.conf`](docs/akustik-nginx.conf)
+   örneğine göre düzenleyin, eski `auth_basic` satırlarını kaldırın, `nginx -t && systemctl reload nginx`.
+4. Kendinize bir **Tam lisans** hesabı açıp giriş yapın.
+
+Akış: Nginx her isteği `auth_request` ile `/api/akustik/dogrula` ucuna sorar; oturum yoksa
+`/akustik/giris` sayfasına yönlendirir. Hesap aracı `/api/akustik/oturum` ucundan demo kalan süresini
+okuyup üst çubukta gösterir; süre dolunca sayfayı yeniler ve kullanıcı giriş sayfasına düşer.
 
 ## E-posta gönderimini aktifleştirme
 

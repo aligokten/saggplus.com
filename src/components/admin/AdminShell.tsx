@@ -11,6 +11,7 @@ import {
   Wrench,
   Users,
   Settings,
+  AudioLines,
 } from "lucide-react";
 import Logo from "@/components/Logo";
 
@@ -20,6 +21,7 @@ const links = [
   { href: "/admin/team", label: "Ekip", icon: Users },
   { href: "/admin/messages", label: "Mesajlar", icon: MessageSquare },
   { href: "/admin/staj", label: "Staj Başvuruları", icon: GraduationCap },
+  { href: "/admin/akustik", label: "Akustik Kullanıcıları", icon: AudioLines },
   { href: "/admin/settings", label: "Ayarlar", icon: Settings },
 ];
 

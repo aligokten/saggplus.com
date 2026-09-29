@@ -87,6 +87,24 @@ db.exec(`
     is_read INTEGER NOT NULL DEFAULT 0,
     status TEXT NOT NULL DEFAULT 'beklemede'
   );
+
+  -- akustik.saggplus.com kullanıcıları. Zamanlar ISO 8601 (UTC) metnidir.
+  -- Demo hesabında süre ilk girişte başlar: first_login_at ve expires_at o anda
+  -- yazılır. Süre dolunca ya da hesap iptal edilince password_hash silinir.
+  CREATE TABLE IF NOT EXISTS akustik_users (
+    id TEXT PRIMARY KEY,
+    email TEXT UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL DEFAULT '',
+    kind TEXT NOT NULL DEFAULT 'demo',
+    note TEXT NOT NULL DEFAULT '',
+    session_version INTEGER NOT NULL DEFAULT 1,
+    created_at TEXT NOT NULL,
+    first_login_at TEXT,
+    last_login_at TEXT,
+    expires_at TEXT,
+    revoked_at TEXT,
+    revoke_reason TEXT NOT NULL DEFAULT ''
+  );
 `);
 
 const internshipColumns = db
