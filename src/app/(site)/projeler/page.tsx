@@ -9,7 +9,8 @@ import { listProjects } from "@/lib/projects";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Projeler | SAGG+",
+  title: "Projeler",
+  alternates: { canonical: "/projeler" },
   description:
     "SAGG+ tarafından hayata geçirilen mimari proje, iç mekan tasarımı, akustik rapor ve anahtar teslim inşaat projelerinin tamamı.",
 };
