@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createContactSubmission } from "@/lib/contact";
+import { sendPhoneNotification } from "@/lib/notify";
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
@@ -39,11 +40,23 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Girdi çok uzun." }, { status: 400 });
   }
 
-  createContactSubmission({
+  const submission = createContactSubmission({
     name: name.trim(),
     email: email.trim(),
     phone: phone?.trim() ?? "",
     message: message.trim(),
+  });
+
+  await sendPhoneNotification({
+    title: `Yeni iletişim mesajı: ${submission.name}`,
+    message: [
+      `E-posta: ${submission.email}`,
+      `Telefon: ${submission.phone || "-"}`,
+      "",
+      submission.message,
+    ].join("\n"),
+    tags: ["envelope"],
+    adminPath: "/admin/messages",
   });
 
   // NOTE: email delivery to info@saggplus.com is not wired up yet — submissions

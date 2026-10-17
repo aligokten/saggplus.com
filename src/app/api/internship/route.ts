@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createInternshipApplication } from "@/lib/internship";
 import { createContactSubmission } from "@/lib/contact";
+import { sendPhoneNotification } from "@/lib/notify";
 
 const INTERNSHIP_TYPES = new Set(["Ofis Stajı", "Şantiye Stajı"]);
 
@@ -93,6 +94,18 @@ export async function POST(req: NextRequest) {
       "Ek Not:",
       cleanApplication.notes || "-",
     ].join("\n"),
+  });
+
+  await sendPhoneNotification({
+    title: `Yeni staj başvurusu: ${cleanApplication.full_name}`,
+    message: [
+      `${cleanApplication.internship_type} · ${cleanApplication.required_duration}`,
+      `${cleanApplication.school} – ${cleanApplication.department} (${cleanApplication.term})`,
+      `E-posta: ${cleanApplication.email}`,
+      `Telefon: ${cleanApplication.phone || "-"}`,
+    ].join("\n"),
+    tags: ["mortar_board"],
+    adminPath: "/admin/staj",
   });
 
   return NextResponse.json({ ok: true });

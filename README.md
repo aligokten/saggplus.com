@@ -107,6 +107,21 @@ Akış: Nginx her isteği `auth_request` ile `/api/akustik/dogrula` ucuna sorar;
 `/akustik/giris` sayfasına yönlendirir. Hesap aracı `/api/akustik/oturum` ucundan demo kalan süresini
 okuyup üst çubukta gösterir; süre dolunca sayfayı yeniler ve kullanıcı giriş sayfasına düşer.
 
+## Telefon bildirimleri (ntfy)
+
+İletişim formu veya staj başvuru formu gönderildiğinde telefona anlık bildirim
+gider ([ntfy.sh](https://ntfy.sh)). Bildirime dokununca ilgili admin sayfası açılır.
+
+1. Telefona **ntfy** uygulamasını kurun (App Store / Google Play).
+2. Tahmin edilemeyecek bir konu adı üretin: `echo "saggplus-$(openssl rand -hex 12)"`.
+   ntfy.sh konuları herkese açıktır; adı bilen herkes bildirimleri okuyabilir.
+3. Uygulamada **+ → Subscribe to topic** ile bu adı ekleyin.
+4. Sunucuda `.env` dosyasına `NTFY_TOPIC=<konu-adı>` ekleyip
+   `pm2 restart saggplus --update-env` çalıştırın.
+
+`NTFY_TOPIC` boşsa bildirim gönderilmez. Bildirim gönderilemezse form yine
+kaydedilir; hata `pm2 logs saggplus` içinde görünür.
+
 ## E-posta gönderimini aktifleştirme
 
 Şu an iletişim formu gönderileri yalnızca veritabanına kaydediliyor ve
