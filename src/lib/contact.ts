@@ -40,3 +40,7 @@ export function listContactSubmissions(): ContactSubmission[] {
     .prepare("SELECT * FROM contact_submissions ORDER BY created_at DESC")
     .all() as ContactSubmission[];
 }
+
+export function deleteContactSubmission(id: string): void {
+  db.prepare("DELETE FROM contact_submissions WHERE id = ?").run(id);
+}

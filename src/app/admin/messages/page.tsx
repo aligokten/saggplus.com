@@ -1,8 +1,8 @@
 import AdminShell from "@/components/admin/AdminShell";
+import ContactMessagesList from "@/components/admin/ContactMessagesList";
 import InternshipApplicationsList from "@/components/admin/InternshipApplicationsList";
 import { listContactSubmissions } from "@/lib/contact";
 import { listInternshipApplications } from "@/lib/internship";
-import { Mail, Phone } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -22,40 +22,8 @@ export default function MessagesPage() {
       <section className="mt-8">
         <h2 className="text-lg font-semibold">İletişim Mesajları</h2>
 
-        <div className="mt-4 flex flex-col gap-3">
-          {submissions.length === 0 && (
-            <p className="text-sm text-ink-muted">Henüz mesaj yok.</p>
-          )}
-
-          {submissions.map((s) => (
-            <div key={s.id} className="rounded-2xl glass p-5">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="font-medium">{s.name}</p>
-                <p className="text-xs text-ink-muted">
-                  {new Date(s.created_at).toLocaleString("tr-TR")}
-                </p>
-              </div>
-
-              <div className="mt-2 flex flex-wrap gap-4 text-xs text-ink-muted">
-                <a
-                  href={`mailto:${s.email}`}
-                  className="flex items-center gap-1.5 hover:text-accent"
-                >
-                  <Mail size={13} /> {s.email}
-                </a>
-
-                {s.phone && (
-                  <span className="flex items-center gap-1.5">
-                    <Phone size={13} /> {s.phone}
-                  </span>
-                )}
-              </div>
-
-              <p className="mt-3 text-sm leading-relaxed whitespace-pre-line">
-                {s.message}
-              </p>
-            </div>
-          ))}
+        <div className="mt-4">
+          <ContactMessagesList submissions={submissions} />
         </div>
       </section>
 
