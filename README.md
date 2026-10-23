@@ -107,10 +107,29 @@ Akış: Nginx her isteği `auth_request` ile `/api/akustik/dogrula` ucuna sorar;
 `/akustik/giris` sayfasına yönlendirir. Hesap aracı `/api/akustik/oturum` ucundan demo kalan süresini
 okuyup üst çubukta gösterir; süre dolunca sayfayı yeniler ve kullanıcı giriş sayfasına düşer.
 
-## Telefon bildirimleri (ntfy)
+## Telefon bildirimleri (Telegram / ntfy)
 
 İletişim formu veya staj başvuru formu gönderildiğinde telefona anlık bildirim
-gider ([ntfy.sh](https://ntfy.sh)). Bildirime dokununca ilgili admin sayfası açılır.
+gider. `.env` içinde hangi kanalın değişkenleri doluysa o kullanılır; ikisi
+birlikte de açık olabilir. Bildirim gönderilemezse form yine kaydedilir; hata
+`pm2 logs saggplus` içinde görünür.
+
+### Telegram (önerilen)
+
+Bildirimde ad, e-posta, telefon ve mesaj yer alır. Telefon numarasına dokununca
+arama açılır, altında **WhatsApp** ve **Panel** düğmeleri olur.
+
+1. Telegram'da **@BotFather**'a `/newbot` yazın, bota bir ad verin. Verdiği
+   tokenı (`123456789:AA...`) saklayın.
+2. Yeni botunuzu açıp **Başlat**'a basın ve herhangi bir mesaj yazın.
+3. Sunucuda sohbet kimliğinizi bulun:
+   `curl -s https://api.telegram.org/bot<TOKEN>/getUpdates` →
+   `"chat":{"id":123456789` içindeki sayı.
+4. `.env` dosyasına `TELEGRAM_BOT_TOKEN=<token>` ve `TELEGRAM_CHAT_ID=<id>`
+   ekleyip `pm2 restart saggplus --update-env` çalıştırın. Birden fazla kişiye
+   göndermek için kimlikleri virgülle ayırın.
+
+### ntfy
 
 1. Telefona **ntfy** uygulamasını kurun (App Store / Google Play).
 2. Tahmin edilemeyecek bir konu adı üretin: `echo "saggplus-$(openssl rand -hex 12)"`.
@@ -118,9 +137,6 @@ gider ([ntfy.sh](https://ntfy.sh)). Bildirime dokununca ilgili admin sayfası a�
 3. Uygulamada **+ → Subscribe to topic** ile bu adı ekleyin.
 4. Sunucuda `.env` dosyasına `NTFY_TOPIC=<konu-adı>` ekleyip
    `pm2 restart saggplus --update-env` çalıştırın.
-
-`NTFY_TOPIC` boşsa bildirim gönderilmez. Bildirim gönderilemezse form yine
-kaydedilir; hata `pm2 logs saggplus` içinde görünür.
 
 ## E-posta gönderimini aktifleştirme
 

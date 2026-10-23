@@ -97,15 +97,18 @@ export async function POST(req: NextRequest) {
   });
 
   await sendPhoneNotification({
-    title: `Yeni staj başvurusu: ${cleanApplication.full_name}`,
-    message: [
-      `${cleanApplication.internship_type} · ${cleanApplication.required_duration}`,
-      `${cleanApplication.school} – ${cleanApplication.department} (${cleanApplication.term})`,
-      `E-posta: ${cleanApplication.email}`,
-      `Telefon: ${cleanApplication.phone || "-"}`,
-    ].join("\n"),
-    tags: ["mortar_board"],
+    title: "🎓 Yeni staj başvurusu",
+    fields: [
+      ["Ad Soyad", cleanApplication.full_name],
+      ["Staj", `${cleanApplication.internship_type} · ${cleanApplication.required_duration}`],
+      ["Okul", `${cleanApplication.school} – ${cleanApplication.department}`],
+      ["Dönem", cleanApplication.term],
+      ["E-posta", cleanApplication.email],
+    ],
+    phone: cleanApplication.phone,
+    body: cleanApplication.notes,
     adminPath: "/admin/staj",
+    ntfyTags: ["mortar_board"],
   });
 
   return NextResponse.json({ ok: true });

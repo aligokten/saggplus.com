@@ -48,15 +48,15 @@ export async function POST(req: NextRequest) {
   });
 
   await sendPhoneNotification({
-    title: `Yeni iletişim mesajı: ${submission.name}`,
-    message: [
-      `E-posta: ${submission.email}`,
-      `Telefon: ${submission.phone || "-"}`,
-      "",
-      submission.message,
-    ].join("\n"),
-    tags: ["envelope"],
+    title: "📩 Yeni iletişim mesajı",
+    fields: [
+      ["Ad", submission.name],
+      ["E-posta", submission.email],
+    ],
+    phone: submission.phone,
+    body: submission.message,
     adminPath: "/admin/messages",
+    ntfyTags: ["envelope"],
   });
 
   // NOTE: email delivery to info@saggplus.com is not wired up yet — submissions
