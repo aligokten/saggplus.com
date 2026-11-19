@@ -4,6 +4,8 @@ import Projects from "@/components/Projects";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import KineticBand from "@/components/motion/KineticBand";
+import { company } from "@/lib/content";
 import { countPublishedProjects, listFeaturedProjects } from "@/lib/projects";
 import { listServices } from "@/lib/services";
 import { listTeamMembers } from "@/lib/team";
@@ -26,9 +28,17 @@ export default function Home() {
     <>
       <main className="flex-1">
         <Hero heroImage={settings.hero_image} announcementEnabled={announcementEnabled} />
+        <KineticBand items={services.map((s) => s.title)} />
         <Services services={services} />
         <Projects projects={projects} totalCount={projectCount} />
-        <About team={team} />
+        <About
+          team={team}
+          stats={{
+            yearsActive: new Date().getFullYear() - Number(company.founded),
+            projectCount,
+            serviceCount: services.length,
+          }}
+        />
         <Contact />
       </main>
       <Footer />

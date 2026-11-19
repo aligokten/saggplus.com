@@ -175,3 +175,18 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ---------- hero blueprint: construction lines keep crawling ---------- */
+.blueprint-dash path {
+  animation: blueprint-dash 6s linear infinite;
+}
+
+@keyframes blueprint-dash {
+  to { stroke-dashoffset: -100; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blueprint-dash path {
+    animation: none;
+  }
+}

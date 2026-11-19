@@ -25,10 +25,10 @@ export default function ProjectGrid({ projects }: { projects: Project[] }) {
             onTouchStart={() => setTouched(project.id)}
             onTouchEnd={() => setTouched(null)}
             onTouchCancel={() => setTouched(null)}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 60, clipPath: "inset(30% 0% 0% 0% round 24px)" }}
+            whileInView={{ opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0% round 24px)" }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: (i % 4) * 0.08 }}
+            transition={{ duration: 0.9, delay: (i % 4) * 0.12, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -8 }}
             className="group relative flex h-full flex-col rounded-3xl glass overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
@@ -38,14 +38,22 @@ export default function ProjectGrid({ projects }: { projects: Project[] }) {
                 the image box carries its own matching radius. */}
             <div className="relative aspect-[4/3] shrink-0 overflow-hidden rounded-t-3xl">
               {project.images[0] ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={project.images[0]}
-                  alt={project.title}
-                  className={`block h-full w-full object-cover object-center transition-[transform,filter] duration-700 group-hover:grayscale-0 group-hover:scale-110 ${
-                    touched === project.id ? "grayscale-0" : "grayscale"
-                  }`}
-                />
+                <motion.div
+                  initial={{ scale: 1.3 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 1.4, delay: (i % 4) * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                  className="h-full w-full"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.images[0]}
+                    alt={project.title}
+                    className={`block h-full w-full object-cover object-center transition-[transform,filter] duration-700 group-hover:grayscale-0 group-hover:scale-110 ${
+                      touched === project.id ? "grayscale-0" : "grayscale"
+                    }`}
+                  />
+                </motion.div>
               ) : (
                 <div
                   className={`h-full w-full bg-gradient-to-br from-accent/20 to-accent-2/20 transition-[filter] duration-700 group-hover:grayscale-0 ${

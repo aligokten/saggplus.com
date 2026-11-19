@@ -1,6 +1,7 @@
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Header from "@/components/Header";
 import AnnouncementBar from "@/components/AnnouncementBar";
+import MotionProvider from "@/components/motion/MotionProvider";
 import { getSettings } from "@/lib/settings";
 
 export const dynamic = "force-dynamic";
@@ -14,11 +15,13 @@ export default function SiteLayout({
   const announcementEnabled = Boolean(settings.announcement_enabled) && Boolean(settings.announcement_text);
 
   return (
-    <div className="flex flex-col flex-1" id="top">
-      <AnimatedBackground />
-      {announcementEnabled && <AnnouncementBar text={settings.announcement_text} />}
-      <Header announcementEnabled={announcementEnabled} />
-      {children}
-    </div>
+    <MotionProvider>
+      <div className="flex flex-col flex-1" id="top">
+        <AnimatedBackground />
+        {announcementEnabled && <AnnouncementBar text={settings.announcement_text} />}
+        <Header announcementEnabled={announcementEnabled} />
+        {children}
+      </div>
+    </MotionProvider>
   );
 }
