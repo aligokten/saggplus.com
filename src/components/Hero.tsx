@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { company } from "@/lib/content";
 import NavLink from "./NavLink";
 import RevealText from "./motion/RevealText";
-import BlueprintDrawing from "./motion/BlueprintDrawing";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -18,12 +17,11 @@ export default function Hero({
 }) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  // Kaydırırken görsel yavaş, metin hızlı yukarı kayar; ikisi de solar.
+  // Kaydırırken görsel yavaş, metin hızlı yukarı kayar; metin solar.
   const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const drawingY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
 
   return (
     <section
@@ -54,13 +52,6 @@ export default function Hero({
             <img src={heroImage} alt="" className="h-full w-full object-cover" />
           </motion.div>
         </motion.div>
-      </motion.div>
-
-      <motion.div
-        style={{ y: drawingY }}
-        className="pointer-events-none absolute right-2 lg:right-[max(1.5rem,calc((100vw-80rem)/2))] top-1/2 -translate-y-1/2 hidden md:block w-[min(640px,50vw)] opacity-40 lg:opacity-70"
-      >
-        <BlueprintDrawing className="h-auto w-full" />
       </motion.div>
 
       <motion.div
